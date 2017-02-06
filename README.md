@@ -2,7 +2,7 @@
 READ ME - Simple Book Store + Google Sheets
 
 ## Description
-Create a simple content management system that allows users to add, delete, or update books.  Books entered in the system can be viewed in a listing, or searched for using basic searches (title, author, genre). 
+Create a simple content management system that allows users to add, delete, or update books.  Books entered in the system can be viewed in a listing, or searched for using basic searches (title, author, genre).
 
 ## Context
 Creating this web application will provide exposure to:
@@ -34,6 +34,7 @@ Creating this web application will provide exposure to:
 
 Model -
 ## http://ondras.zarovi.cz/sql/demo/
+
 
 <!-- LICENSE -->
 
