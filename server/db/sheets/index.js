@@ -5,18 +5,29 @@ const books = 2
 const members = 1
 let token
 
-const setToken = (value)=>{
-  token = value
+const setToken = (error) => {
+  spreadsheet.getInfo((error, sheetInfo) => {
+    console.log(sheetInfo.title + ' is loaded')
+
+    let sheet1 = sheetInfo.worksheets[0]
+
+    sheet1.getRows(function(err, rows) {
+      console.log(rows[24]);
+    })
+  })
 }
 
-const sheet = new GoogleSheets(sheetID, credentials)
-sheet.useServiceAccountAuth(credentials, setToken)
-console.log(sheet)
+const spreadsheet = new GoogleSheets(sheetID, credentials)
+spreadsheet.useServiceAccountAuth(credentials, setToken)
 
 
 
-sheet.addRow(
+
+
+spreadsheet.addRow(
   1,
-  { id: 0, 	profile_img: 'http://url.com',	first_name: 'john' ,	last_name: 'hopkins',	password: 'youllneverguess',	is_admin: false },
-  (error) => console.log('in the error logging',error)
+  { id: 0, 	profile_img: 'http://anotherurl.com',	first_name: 'john' ,	last_name: 'hopkins',	password: 'youllneverguess',	is_admin: false },
+  (error) => error
 )
+
+console.log(token)
