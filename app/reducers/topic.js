@@ -69,6 +69,3 @@ const topicReducer = combineReducers({
 });
 
 export default topicReducer;
-
-
-Object.assign({count}, {})

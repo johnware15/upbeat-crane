@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import TopicTextInput from '../components/TopicTextInput';
 import styles from '../css/components/entrybox';
+import Navbar from '../components/Navbar';
 
 const cx = classNames.bind(styles);
 
@@ -20,6 +21,7 @@ const EntryBox = ({onEntryChange, onEntrySave, topic}) => {
         placeholder="Suggest a hackday idea . . ."
         onEntryChange={onEntryChange}
         onEntrySave={onEntrySave} />
+        <Navbar />
     </div>
   );
 };
