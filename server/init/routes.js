@@ -3,11 +3,12 @@
  */
 import passport from 'passport';
 import unsupportedMessage from '../db/unsupportedMessage';
-import { controllers, passport as passportConfig } from '../db';
+import { controllers, passport as passportConfig} from '../db';
+console.log('controllers default ',controllers);
 
 const usersController = controllers && controllers.users;
 const topicsController = controllers && controllers.topics;
-
+console.log('ctl: ',usersController);
 export default (app) => {
   // user routes
   if (usersController) {
@@ -15,6 +16,7 @@ export default (app) => {
     app.post('/signup', usersController.signUp);
     app.post('/logout', usersController.logout);
   } else {
+    console.log(usersController);
     console.warn(unsupportedMessage('users routes'));
   }
 

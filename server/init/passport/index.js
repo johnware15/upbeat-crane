@@ -15,12 +15,14 @@ export default () => {
   // deserializing.
 
   if (dbPassport && dbPassport.deserializeUser) {
+    console.log(dbPassport,' - ',dbPassport.deserializeUser);
     passport.serializeUser((user, done) => {
       done(null, user.id);
     });
 
     passport.deserializeUser(dbPassport.deserializeUser);
   } else {
+    console.log(dbPassport, ' - ', dbPassport.deserializeUser)
     console.warn(unsupportedMessage('(de)serialize User'));
   }
 
