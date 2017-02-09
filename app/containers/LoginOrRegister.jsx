@@ -97,7 +97,7 @@ class LoginOrRegister extends Component {
               <p
                 className={cx('message', {
                 'message-show': message && message.length > 0
-              })}>{message}</p>
+              })}>{message.keys}</p>
               <input
                 className={cx('button')}
                 type="submit"

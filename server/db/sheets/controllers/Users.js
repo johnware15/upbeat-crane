@@ -1,4 +1,5 @@
 import passport from 'passport'
+import uuidv1 from 'uuid/v1'
 const GoogleSheets = require('google-drive-sheets');
 const credentials = require('../credentials.json')
 const sheetID = '1DLGHWgPD-hfG391DZp6kUV9MuKj-4KF4xrVEKPd4Tbs'
@@ -8,13 +9,16 @@ const connect = new GoogleSheets(sheetID, credentials)
 export function login(req, res, next) {
   // Do email and password validation for the server
   passport.authenticate('local', (authErr, user, info) => {
+    console.log('authenticating..........');
     if (authErr) return next(authErr);
     if (!user) {
+      console.log('no user');
       return res.status(401).json({ message: info.message });
     }
     // Passport exposes a login() function on req (also aliased as
     // logIn()) that can be used to establish a login session
     return req.logIn(user, (loginErr) => {
+      console.log(loginErr);
       if (loginErr) return res.status(401).json({ message: loginErr });
       console.log(user);
       return res.status(200).json({
@@ -40,6 +44,7 @@ export function logout(req, res) {
 export function signUp(req, res, next) {
 
   const user = {
+    id: uuidv1(),
     email: req.body.email,
     password: req.body.password,
     isAdmin: false
@@ -52,7 +57,6 @@ export function signUp(req, res, next) {
       if(err){console.log(err)}
       let memberList = sheetInfo.worksheets[0]
       memberList.getRows({start: 0}, (error, rows ) =>{
-        console.log('insede of getRows--->');
         let existingUser = rows.filter(row => row.email === req.body.email)
         if(existingUser[0]){
           console.log('user exists', existingUser);

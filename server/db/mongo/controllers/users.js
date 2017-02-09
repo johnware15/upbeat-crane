@@ -7,8 +7,10 @@ import User from '../models/user';
 export function login(req, res, next) {
   // Do email and password validation for the server
   passport.authenticate('local', (authErr, user, info) => {
+    console.log('were authenticating');
     if (authErr) return next(authErr);
     if (!user) {
+      console.log('there is no user');
       return res.status(401).json({ message: info.message });
     }
     // Passport exposes a login() function on req (also aliased as

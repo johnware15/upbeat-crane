@@ -74,14 +74,17 @@ export function manualLogin(data) {
 
     return makeUserRequest('post', data, '/login')
       .then(response => {
+        console.log('in manual login: ', response);
         if (response.status === 200) {
           dispatch(loginSuccess(response.data.message));
           dispatch(push('/'));
         } else {
+          console.log('in error');
           dispatch(loginError('Oops! Something went wrong!'));
         }
       })
       .catch(err => {
+        console.log('in catch:', data);
         dispatch(loginError(getMessage(err)));
       });
   };
@@ -101,6 +104,7 @@ export function signUp(data) {
         }
       })
       .catch(err => {
+        console.log(err);
         dispatch(signUpError(getMessage(err)));
       });
   };

@@ -26,6 +26,7 @@ const buildPage = ({ componentHTML, initialState, headAssets }) => {
     <script>window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}</script>
     ${createAppScript()}
   </body>
+  <script src="http://localhost:8097"></script>
 </html>`;
 };
 
@@ -35,4 +36,3 @@ export default (store, props) => {
   const headAssets = Helmet.rewind();
   return buildPage({ componentHTML, initialState, headAssets });
 };
-

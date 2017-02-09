@@ -102,6 +102,7 @@
     "rimraf": "^2.5.4",
     "sequelize": "^3.24.1",
     "sequelize-cli": "^2.3.1",
+    "sessionstore": "^1.2.16",
     "spark-md5": "^2.0.2",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
