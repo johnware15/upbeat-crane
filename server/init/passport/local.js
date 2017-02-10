@@ -1,8 +1,3 @@
-/*
- Configuring local strategy to authenticate strategies
- Code modified from : https://github.com/madhums/node-express-mongoose-demo/blob/master/config/passport/local.js
- */
-
 import { Strategy as LocalStrategy } from 'passport-local';
 import { passport as dbPassport } from '../../db';
 import unsupportedMessage from '../../db/unsupportedMessage';

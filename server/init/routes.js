@@ -3,11 +3,10 @@
  */
 import passport from 'passport';
 import unsupportedMessage from '../db/unsupportedMessage';
-import { controllers, passport as passportConfig } from '../db';
+import { controllers, passport as passportConfig} from '../db';
 
 const usersController = controllers && controllers.users;
-const topicsController = controllers && controllers.topics;
-
+const booksController = controllers && controllers.books;
 export default (app) => {
   // user routes
   if (usersController) {
@@ -44,12 +43,12 @@ export default (app) => {
   }
 
   // topic routes
-  if (topicsController) {
-    app.get('/topic', topicsController.all);
-    app.post('/topic/:id', topicsController.add);
-    app.put('/topic/:id', topicsController.update);
-    app.delete('/topic/:id', topicsController.remove);
+  if (booksController) {
+    app.get('/book', booksController.all);
+    app.post('/book/:id', booksController.add);
+    app.put('/book/:id', booksController.update);
+    app.delete('/book/:id', booksController.remove);
   } else {
-    console.warn(unsupportedMessage('topics routes'));
+    console.warn(unsupportedMessage('books routes'));
   }
 };

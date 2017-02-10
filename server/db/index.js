@@ -14,6 +14,9 @@ switch (DB_TYPE) {
   case DB_TYPES.NONE:
     dbConfig = require('./none').default;
     break;
+  case DB_TYPES.SHEETS:
+    dbConfig = require('./sheets').default;
+    break;
   default:
     throw new Error(`No database type '${DB_TYPE}' found`);
 }
@@ -22,4 +25,3 @@ export const connect = dbConfig.connect;
 export const controllers = dbConfig.controllers;
 export const passport = dbConfig.passport;
 export const session = dbConfig.session;
-

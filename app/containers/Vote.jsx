@@ -4,49 +4,47 @@ import classNames from 'classnames/bind';
 import EntryBox from '../components/EntryBox';
 import MainSection from '../components/MainSection';
 import Scoreboard from '../components/Scoreboard';
-import { createTopic, typing, incrementCount,
-  decrementCount, destroyTopic } from '../actions/topics';
+import { createBook, typing, incrementCount,
+  decrementCount, destroyBook } from '../actions/books';
 import styles from '../css/components/vote';
 
 const cx = classNames.bind(styles);
 
 class Vote extends Component {
   render() {
-    const {newTopic, topics, typing, createTopic, destroyTopic, incrementCount, decrementCount } = this.props;
+    const { books, typing, createTopic, destroyBook, incrementCount, decrementCount } = this.props;
+
     return (
       <div className={cx('vote')}>
         <EntryBox
-          topic={newTopic}
+          topic={books}
           onEntryChange={typing}
-          onEntrySave={createTopic} />
+          onEntrySave={createBook} />
         <MainSection
-          topics={topics}
+          books={books}
           onIncrement={incrementCount}
           onDecrement={decrementCount}
-          onDestroy={destroyTopic} />
-        <Scoreboard topics={topics} />
+          onDestroy={destroyBook} />
       </div>
     );
   }
 }
 
 Vote.propTypes = {
-  topics: PropTypes.array.isRequired,
+  books: PropTypes.array.isRequired,
   typing: PropTypes.func.isRequired,
-  createTopic: PropTypes.func.isRequired,
-  destroyTopic: PropTypes.func.isRequired,
+  createBook: PropTypes.func.isRequired,
+  destroyBook: PropTypes.func.isRequired,
   incrementCount: PropTypes.func.isRequired,
   decrementCount: PropTypes.func.isRequired,
-  newTopic: PropTypes.string
 };
 
 function mapStateToProps(state) {
   return {
-    topics: state.topic.topics,
-    newTopic: state.topic.newTopic
+    books: state.book.books,
   };
 }
 
 // Read more about where to place `connect` here:
 // https://github.com/rackt/react-redux/issues/75#issuecomment-135436563
-export default connect(mapStateToProps, { createTopic, typing, incrementCount, decrementCount, destroyTopic })(Vote);
+export default connect(mapStateToProps, { createBook, typing, incrementCount, decrementCount, destroyBook })(Vote);

@@ -4,6 +4,6 @@ export const HOST = process.env.HOSTNAME || 'localhost';
 export const PORT = process.env.PORT || '3000';
 export const ENV = process.env.NODE_ENV || 'development';
 
-export const DB_TYPE = process.env.DB_TYPE || DB_TYPES.POSTGRES;
+export const DB_TYPE = process.env.DB_TYPE || DB_TYPES.SHEETS;
 
 export const GOOGLE_ANALYTICS_ID = process.env.GOOGLE_ANALYTICS_ID || null;
