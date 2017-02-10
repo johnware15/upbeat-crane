@@ -6,6 +6,7 @@
   @apply --card;
   width: 50%;
   border-radius: var(--globalRadius);
+  width:100%;
 }
 
 .header {
@@ -19,4 +20,3 @@
   list-style: none;
   padding: 16px;
 }
-

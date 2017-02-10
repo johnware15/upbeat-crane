@@ -7,14 +7,19 @@ const cx = classNames.bind(styles);
 const BookItem = ({ id, title, description, coverjpg, author, genre }) => {
   return (
     <li className={cx('book-item')} key={id}>
-      <span className={cx('book')}>{title}</span>
-      <p> {coverjpg} </p>
-      <p> {author} </p>
-      <p> {description} </p>
-      <p> {genre} </p>
+      <span className={cx('book')}>
+        {title}
+        <div className={cx('bookInfo')}>{coverjpg}</div>
+        <div className={cx('bookInfo')}>{author}</div>
+      </span>
     </li>
   );
 };
+
+// <p className={cx('bookInfo')}> {coverjpg} </p>
+// <p className={cx('bookInfo')}> {author} </p>
+// <p className={cx('bookInfo')}> {description} </p>
+// <p className={cx('bookInfo')}> {genre} </p>
 
 BookItem.propTypes = {
   title: PropTypes.string.isRequired,

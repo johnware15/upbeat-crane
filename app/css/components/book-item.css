@@ -10,7 +10,12 @@
 .book {
   @apply --flexNotMoreThan200;
   font-size: var(--fontMedium);
+  border:1px solid green;
+  margin-bottom:30px;
+  text-align:center;
 }
+
+.bookInfo { margin-left:0; color:orange;}
 
 .button {
   font-size: var(--fontMedium);
@@ -33,4 +38,3 @@
 .destroy {
   background-color: var(--colorPunch);
 }
-
