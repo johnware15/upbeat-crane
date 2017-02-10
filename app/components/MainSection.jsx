@@ -5,7 +5,7 @@ import styles from '../css/components/main-section';
 
 const cx = classNames.bind(styles);
 
-const MainSection = ({ book }) => {
+const MainSection = ({ books }) => {
   // console.log('this is it',books);
   const bookItems = books.map((book, key) => {
     return (
@@ -13,9 +13,10 @@ const MainSection = ({ book }) => {
         index={key}
         id={book.id}
         key={key}
+        title={book.title}
+        genre={book.genre}
         description={book.description}
         coverjpg={book.coverjpg}
-        title={book.title}
         author={book.author} />);
   });
 
@@ -28,11 +29,7 @@ const MainSection = ({ book }) => {
 };
 
 MainSection.propTypes = {
-  description: PropTypes.array.isRequired,
-   coverjpg: urlValidator
-    title: PropTypes.string.isRequired,
-     author: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired
+  books: PropTypes.array.isRequired
 };
 
 export default MainSection;

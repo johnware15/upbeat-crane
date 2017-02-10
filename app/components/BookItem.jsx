@@ -1,34 +1,28 @@
 import React, { PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import styles from '../css/components/book-item';
-import urlValidator from 'react-proptypes-url-validator'
 
 const cx = classNames.bind(styles);
 
-const BookItem = ({ description, coverjpg, title, author, id }) => {
-
+const BookItem = ({ id, title, description, coverjpg, author, genre }) => {
   return (
     <li className={cx('book-item')} key={id}>
-      <span className={cx('book')}>{text}</span>
-      <button
-        className={cx('button', 'increment')}
-        onClick={onIncrement}>+</button>
-      <button
-        className={cx('button', 'decrement')}
-        onClick={onDecrement}>-</button>
-      <button
-        className={cx('button', 'destroy')}
-        onClick={onDestroy}>{String.fromCharCode(215)}</button>
+      <span className={cx('book')}>{title}</span>
+      <p> {coverjpg} </p>
+      <p> {author} </p>
+      <p> {description} </p>
+      <p> {genre} </p>
     </li>
   );
 };
 
 BookItem.propTypes = {
-  description: PropTypes.array.isRequired,
-   coverjpg: urlValidator
-    title: PropTypes.string.isRequired,
-     author: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  coverjpg: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  genre: PropTypes.string.isRequired
 };
 
 export default BookItem;

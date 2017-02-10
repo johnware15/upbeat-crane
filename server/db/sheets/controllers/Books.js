@@ -7,13 +7,9 @@ const connect = new GoogleSheets(sheetID, credentials)
  * List
  */
 export function all(req, res) {
-  const returnValue = []
-  function sendResponse(error, values){
-    values.forEach(value => returnValue.push(value))
-    return res.json(returnValue);
+  function setReturnValue(error, value){
+    return res.json(value)
   }
-  console.log('after setter',returnValue);
-
 
   return connect.useServiceAccountAuth(credentials, error => {
     connect.getInfo((err, spreadsheet) => {
@@ -21,7 +17,8 @@ export function all(req, res) {
         console.log('Error in first query');
         return res.status(500).send('Something went wrong getting the data');
       }
-      // console.log('books from controller: ', spreadsheet.worksheets[1].getRows({start: 0}, sendResponse))
+      spreadsheet.worksheets[1].getRows({start: 0}, setReturnValue)
+    ;
     });
   })
 }

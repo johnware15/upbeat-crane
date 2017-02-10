@@ -25,7 +25,6 @@ class Vote extends Component {
           onIncrement={incrementCount}
           onDecrement={decrementCount}
           onDestroy={destroyBook} />
-        <Scoreboard books={books} />
       </div>
     );
   }
