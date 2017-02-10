@@ -9,18 +9,14 @@ const connect = new GoogleSheets(sheetID, credentials)
 export function login(req, res, next) {
   // Do email and password validation for the server
   passport.authenticate('local', (authErr, user, info) => {
-    console.log('authenticating..........');
     if (authErr) return next(authErr);
     if (!user) {
-      console.log('no user');
       return res.status(401).json({ message: info.message });
     }
     // Passport exposes a login() function on req (also aliased as
     // logIn()) that can be used to establish a login session
     return req.logIn(user, (loginErr) => {
-      console.log(loginErr);
       if (loginErr) return res.status(401).json({ message: loginErr });
-      console.log(user);
       return res.status(200).json({
         message: 'You have been successfully logged in.'
       });

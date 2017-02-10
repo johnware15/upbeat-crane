@@ -4,12 +4,12 @@ import styles from '../css/components/scoreboard';
 
 const cx = classNames.bind(styles);
 
-const Scoreboard = ({topics}) => {
-  const topicListItems = topics.map((topic, key) => {
+const Scoreboard = ({books}) => {
+  const bookListItems = books.map((book, key) => {
     return (
       <li className={cx('item')} key={key}>
-        <span className={cx('topic')}>{topic.text}</span>
-        <span className={cx('count')}>{topic.count}</span>
+        <span className={cx('book')}>{book.text}</span>
+        <span className={cx('count')}>{book.count}</span>
       </li>
     );
   });
@@ -17,14 +17,14 @@ const Scoreboard = ({topics}) => {
     <div className={cx('scoreboard')}>
       <h3 className={cx('header')}>Vote count</h3>
       <ul className={cx('list')}>
-        {topicListItems}
+        {bookListItems}
       </ul>
     </div>
   );
 };
 
 Scoreboard.propTypes = {
-  topics: PropTypes.array.isRequired
+  books: PropTypes.array.isRequired
 };
 
 export default Scoreboard;

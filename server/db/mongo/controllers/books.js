@@ -1,29 +1,17 @@
-import GoogleSheets from 'google-drive-sheets'
-import credentials from '../credentials.json'
-const sheetID = '1DLGHWgPD-hfG391DZp6kUV9MuKj-4KF4xrVEKPd4Tbs'
-const sheetIndex = 1
-const connect = new GoogleSheets(sheetID, credentials)
+import _ from 'lodash';
+import Book from '../models/books';
+
 /**
  * List
  */
 export function all(req, res) {
-  const returnValue = []
-  function sendResponse(error, values){
-    values.forEach(value => returnValue.push(value))
-    return res.json(returnValue);
-  }
-  console.log('after setter',returnValue);
+  Book.find({}).exec((err, books) => {
+    if (err) {
+      return res.status(500).send('Something went wrong getting the data');
+    }
 
-
-  return connect.useServiceAccountAuth(credentials, error => {
-    connect.getInfo((err, spreadsheet) => {
-      if (err) {
-        console.log('Error in first query');
-        return res.status(500).send('Something went wrong getting the data');
-      }
-      // console.log('books from controller: ', spreadsheet.worksheets[1].getRows({start: 0}, sendResponse))
-    });
-  })
+    return res.json(books);
+  });
 }
 
 /**
@@ -32,7 +20,6 @@ export function all(req, res) {
 export function add(req, res) {
   Book.create(req.body, (err) => {
     if (err) {
-      console.log(err);
       return res.status(400).send(err);
     }
 
@@ -90,5 +77,5 @@ export default {
   all,
   add,
   update,
-  remove,
-}
+  remove
+};

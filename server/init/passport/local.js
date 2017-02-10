@@ -3,13 +3,11 @@ import { passport as dbPassport } from '../../db';
 import unsupportedMessage from '../../db/unsupportedMessage';
 
 export default (passport) => {
-  console.log(dbPassport.local);
   if (!dbPassport || !dbPassport.local || !typeof dbPassport.local === 'function') {
     console.warn(unsupportedMessage('passport-local'));
     return;
   }
 
-console.log('dbPassport', dbPassport);
   /*
   By default, LocalStrategy expects to find credentials in parameters named username and password.
   If your site prefers to name these fields differently,
