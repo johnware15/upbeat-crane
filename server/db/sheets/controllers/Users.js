@@ -16,6 +16,7 @@ export function login(req, res, next) {
     // Passport exposes a login() function on req (also aliased as
     // logIn()) that can be used to establish a login session
     return req.logIn(user, (loginErr) => {
+      console.log('error', loginErr);
       if (loginErr) return res.status(401).json({ message: loginErr });
       return res.status(200).json({
         message: 'You have been successfully logged in.'
@@ -46,7 +47,6 @@ export function signUp(req, res, next) {
     isAdmin: false
   };
 
-
   connect.useServiceAccountAuth(credentials, (err) => {
     if(err){console.log(err)}
     connect.getInfo((err, sheetInfo) => {
@@ -55,7 +55,6 @@ export function signUp(req, res, next) {
       memberList.getRows({start: 0}, (error, rows ) =>{
         let existingUser = rows.filter(row => row.email === req.body.email)
         if(existingUser[0]){
-          console.log('user exists', existingUser);
           return res.status(409).json({ message: 'Account with this email address already exists!' });
         }
         return memberList.addRow(user, error => {

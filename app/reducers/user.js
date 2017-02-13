@@ -72,11 +72,12 @@ const authenticated = (
   }
 };
 
+
 const userReducer = combineReducers({
   isLogin,
   isWaiting,
   authenticated,
-  message
+  message,
 });
 
 export default userReducer;
