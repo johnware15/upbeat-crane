@@ -26,6 +26,7 @@ export function loginSuccess(message) {
 }
 
 export function loginError(message) {
+  console.log('msg-', message);
   return {
     type: types.LOGIN_ERROR_USER,
     message
@@ -82,6 +83,7 @@ export function manualLogin(data) {
         }
       })
       .catch(err => {
+        if(err){console.log(err);}
         dispatch(loginError(getMessage(err)));
       });
   };
